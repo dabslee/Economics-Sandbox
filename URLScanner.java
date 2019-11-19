@@ -10,8 +10,10 @@ import java.net.URL;
 import java.util.Scanner;
 
 public class URLScanner {
-    private String address;
-    private Scanner sc;
+    private String address; // The URL address of the website being scanned
+    public String getAddress() {return this.address;}
+    
+    private Scanner sc; // The scanner that actually scans the website
     
     public URLScanner(String address) throws IOException {
         this.address = address;
@@ -19,13 +21,14 @@ public class URLScanner {
         this.sc = new Scanner(source.openStream());
     }
     
-    public String getAddress() {return this.address;}
-    
+    // Some implementations of Scanner's methods
     public boolean hasNext() {return sc.hasNext();}
     public String next() {return sc.next();}
     public boolean hasNextLine() {return sc.hasNextLine();}
     public String nextLine() {return sc.nextLine();}
+    public void close() {sc.close();}
     
+    // Reads the entirety of the website and returns it as a string
     public String readAll() {
         String allLines = "";
         while (this.hasNextLine()) {
@@ -34,6 +37,4 @@ public class URLScanner {
         }
         return allLines;
     }
-    
-    public void close() {sc.close();}
 }
