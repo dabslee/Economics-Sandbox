@@ -10,6 +10,7 @@ Downloads and parses all the yield curve data from the U.S. treasury website, pu
 * Adding program to check whether csv file is up-to-date without re-downloading all data.
 * Creating and uploading a video (mp4?) of the yield curve animation for those who don't have MATLAB installed.
 * Packaging the Java files into JAR executables. If possible, also make available as EXE.
+* Add another program to detect inversions in the yield curve and quantify the extent of the inversion.
 * If you have any more suggestions, just let me know!
 
 ## Acknowledgements
