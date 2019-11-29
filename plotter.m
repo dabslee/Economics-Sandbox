@@ -62,11 +62,8 @@ if (showDerivatives)
     set(gcf,'color','w');
 end
 
-% Returns a float quantifying the inversion (or noninversion) as follows:
-%   Let $d_n=\frac{i_n-i_{n-1}}{t_n-t_{n-1}}$. Then, we return:
-%   $$Y=\sum_{n=1}^N (d_n+d_n^3)$$
-%   where $N$ is the number of data points, $t_n$ is the maturity for data
-%   point $n$ of $N$, and $i_n$ is its corresponding interest rate.
+% Returns the mean derivative for the yield curve given the array of
+% maturities and their correspondinginterest rates.
 function Y = inversionY(t, i)
     indices = find(~isnan(i));
     i = i(indices);
