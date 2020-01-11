@@ -4,8 +4,10 @@
 %  - If showDerivatives=true, shows graph of the mean derivative of the
 %    yield curve over time at the end of program.
 
-showAnimation = true;
+showAnimation = false;
+animationSpeed = 10;
 showDerivatives = true;
+smoothing = 10; % smoother, less accurate graph for derivatives graph
 
 data = readmatrix("all_yield_data.csv");
 dates = readtable("all_yield_data.csv");
@@ -17,7 +19,7 @@ Ys = [];
 % Reads the csv and animates the yield curve at every date. Meanwhile, also
 % keeps track of the mean derivatives at each date and stores the values in
 % Ys.
-for i = 2:length(data)
+for i = 2:animationSpeed:length(data)
     maturities = data(1,2:end);
     interestrates = data(i,2:end);
     
@@ -42,7 +44,7 @@ end
 if (showDerivatives)
     % Calculating the moving average
     % A larger `lag` will lead to a smoother but less accurate graph.
-    lag = 3;
+    lag = smoothing;
     thesum = Ys(lag:end);
     for i = 1:lag-1
         thesum = thesum + Ys(lag-i:end-i);
