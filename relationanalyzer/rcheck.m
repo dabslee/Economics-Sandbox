@@ -1,6 +1,21 @@
 % Takes two time series' values and dates and checks for a linear
 % relationship, returning a slope and rsq value.
 
+% Parameters:
+%  - years1, years2: Arrays of all the date values of time series 1 and time
+% series 2, respectively
+%  - values1, values2: Arrays of all the index values of time series 1 and
+%  2, respectively
+%  - rate1, rate2: Whether to recalculate the time series 1 and/or 2 as
+%  growth rates or not (percentage change)
+%  - timelag: The days after which to compare time series 2 to 1; for
+%  instance, if the timelag is 10, we compare time series 2 shifted 10 days
+%  forward to time series 1.
+%  - ploton: Whether to show the plot showing series 1's values v. series
+% 2's values.
+%  - calculate: Whether to calculate and return correct values of the
+%  linear fit (slope, rsq)
+
 function [slope, rsq] = rcheck(years1, years2, values1, values2, rate1, rate2, timelag, ploton, calculate)
     % Match up date values
     % Match up starting dates

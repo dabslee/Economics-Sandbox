@@ -1,14 +1,16 @@
-% Goes through all the series offered by FRED and checks for the
-% relationships with maximum strength.
+% Goes through all the series listed in the `indicators.txt` file and
+% records all the linear fit slopes and r-squared values in
+% `allresults.csv`.
 
-% This version is streamlined without any rate checking or timelag checking
-
+% set up arrays
 allseries = table2array(readtable("indicators.txt"));
 allresults = ["Series 1","Series 2","Slope","R^2"]; % series1, series2, slope, rsq
 
+% establish connection to FRED
 url = 'https://fred.stlouisfed.org/';
 connection = fred(url);
 
+% goes through all series combinations and checks for linear relationships
 for i = 1:numel(allseries)
     for j = i+1:numel(allseries)
         series1 = allseries(i);
@@ -20,4 +22,5 @@ for i = 1:numel(allseries)
     end
 end
 
+% saves final allresults matrix as csv file
 writetable(array2table(allresults),"allresults.csv");
